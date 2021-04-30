@@ -1,0 +1,42 @@
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/zigzagDB?serverTimezone=UTC&characterEncoding=UTF-8&autoReconnect=true
+    username: root
+    password: password
+    
+  jpa:
+    hibernate:  
+      ddl-auto: create
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+    properties:
+      hibernate:
+        show-sql: true
+        format_sql: true
+        user_sql_comments: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+  config: classpath:log4j2.xml
+    
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: alpha
+    displayRequestDuration: true
+    groups-order: DESC
+    disable-swagger-default-url: true
+    display-query-params-without-oauth2: true
+  paths-to-match:
+      - /api/v3/**
+      - /users/**
+      - /vacation/**
