@@ -1,5 +1,8 @@
 # 휴가 신청 시스템
-- 개인프로젝트 
+- 개인프로젝트</br>
+Goal </br>
+  - Spring Security, Spring Data JPA 적용
+  - REST API 설계
 
 ## 1. 요구 사항 & 기능 명세
 요구사항
@@ -24,7 +27,7 @@
 ## 3. Prerequisite 
    * IDE : STS-4.0.1.RELEASE
    * Java 1.8 + / Spring Boot 4.1.0 + / JPA / Lombok / Gradle / Spring Security
-   * Database : mysql (ziazagDB :3306)
+   * Database : mysql
 
 ## 4. Architecture
 ##### APIs 
