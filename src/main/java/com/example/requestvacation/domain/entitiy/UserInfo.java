@@ -46,7 +46,7 @@ public class UserInfo extends Time implements UserDetails{
     private Double enrolledVacDs;
 
     @Builder
-	public UserInfo(Long usrSeq, String usrId, String usrPw, String usrName, String usrRole, Double availableVacDs, Double enrolledVacDs) {
+	public UserInfo(String usrId, String usrPw, String usrName, String usrRole, Double availableVacDs, Double enrolledVacDs) {
 		this.usrId = usrId;
 		this.usrPw = usrPw;
 		this.usrName = usrName;
