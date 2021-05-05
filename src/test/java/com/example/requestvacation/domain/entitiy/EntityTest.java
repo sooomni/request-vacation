@@ -37,6 +37,6 @@ public class EntityTest {
 		
 		final String id = user.getUsrName(); 
 		assertEquals("네덜란드", id); 
-		//assertSame(user,user);  		
+		//assertSame(user,user); 		
 	}
 }

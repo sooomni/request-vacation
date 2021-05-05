@@ -17,7 +17,9 @@ import com.example.requestvacation.web.UserController;
 
 import lombok.extern.slf4j.Slf4j;
 
-@SpringBootTest( properties = { "testId=testId", "testName=sooom" } )
+@SpringBootTest( properties = { "testId=testId", "testName=sooom" } ) 
+@Transactional 
+@WebMvcTest(UserController.class)
 @Slf4j
 class RequestVacationApplicationTests {
 	
@@ -27,11 +29,38 @@ class RequestVacationApplicationTests {
 	@Value("${testName}") 
 	private String testName; 
 	
-	@Test void test() throws Exception 
+	@Test void getMember() throws Exception 
 	{ 
 		log.info("##### Properties 테스트 #####"); 
 		log.info("testId : " + testId); 
 		log.info("testName : " + testName); 
+	}
+
+	@Autowired
+	private MockMvc mvc;
+
+	@Test
+	public void post_new() throws Exception {
+		mvc.perform(post("/users/new"))
+				.andExpect(status().isOk());
+	}
+
+	@Test
+	public void post_new_dto() throws Exception {
+		String id = "sooomni";
+		String pw = "test1234";
+		String name = "김수민";
+		String role = "admin";
+
+
+		 mvc.perform(post("/users/new")
+				.param("usrId", id)
+				.param("usrPw", pw)
+				.param("usrName", name)
+				.param("usrRole", role))
+		.andExpect(status().isOk())
+		.andExpect(jsonPath("$.usrId", is(id)))
+		.andExpect(jsonPath("$.usrPw", is(pw)));
 	}
 
 }
